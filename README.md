@@ -1,8 +1,6 @@
 # WoW-Launcher
 A game launcher for World of Warcraft that allows you to connect to custom servers.
 
-[![Support](https://img.shields.io/badge/discord-join-7289DA.svg)](https://arctium.io/discord)
-
 ### License, Copyright & Contributions
 
 Please see our Open Source project [Documentation Repo](https://github.com/Arctium/Documentation)
