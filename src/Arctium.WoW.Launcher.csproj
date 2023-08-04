@@ -1,0 +1,78 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <OutputPath>../build/$(Configuration)/bin</OutputPath>
+        <AssemblyName>Arctium WoW Launcher</AssemblyName>
+        <ApplicationIcon>logo.ico</ApplicationIcon>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net7.0</TargetFramework>
+        <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
+        <AppendTargetFrameworkToOutputPath>False</AppendTargetFrameworkToOutputPath>
+        <AppendRuntimeIdentifierToOutputPath>False</AppendRuntimeIdentifierToOutputPath>
+        <Nullable>disable</Nullable>
+        <LangVersion>preview</LangVersion>
+        <AssemblyVersion>10.0.0.0</AssemblyVersion>
+        <FileVersion>10.0.0.0</FileVersion>
+        <Copyright>Arctium</Copyright>
+        <Platforms>x64;ARM64</Platforms>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <DefineConstants>$(DefineConstants);$(Platform)</DefineConstants>
+        <Configurations>Debug;Release;ReleaseSilentMode;ReleaseCustomFiles;ReleaseCustomFilesSilentMode</Configurations>
+        <Optimize>True</Optimize>
+
+        <!-- Native AOT settings -->
+        <PublishAot>true</PublishAot>
+        <RootAllApplicationAssemblies>false</RootAllApplicationAssemblies>
+        <IlcGenerateCompleteTypeMetadata>false</IlcGenerateCompleteTypeMetadata>
+        <IlcGenerateStackTraceData>false</IlcGenerateStackTraceData>
+        <UseSystemResourceKeys>true</UseSystemResourceKeys>
+        <EventSourceSupport>false</EventSourceSupport>
+        <InvariantGlobalization>true</InvariantGlobalization>
+        <IlcScanReflection>false</IlcScanReflection>
+        <IlcFoldIdenticalMethodBodies>true</IlcFoldIdenticalMethodBodies>
+        <IlcTrimMetadata>true</IlcTrimMetadata>
+        <IlcOptimizationPreference>Speed</IlcOptimizationPreference>
+        <GenerateRuntimeConfigurationFiles>false</GenerateRuntimeConfigurationFiles>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Platform)'=='x64'">
+        <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Platform)'=='ARM64'">
+        <RuntimeIdentifier>win-arm64</RuntimeIdentifier>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)'=='Debug'">
+        <DefineConstants>$(DefineConstants);$(Platform);CUSTOM_FILES</DefineConstants>
+        <Optimize>False</Optimize>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)'=='Release'">
+        <DebugType>none</DebugType>
+        <DebugSymbols>false</DebugSymbols>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)'=='ReleaseCustomFiles'">
+        <DefineConstants>$(DefineConstants);$(Platform);CUSTOM_FILES</DefineConstants>
+        <DebugType>none</DebugType>
+        <DebugSymbols>false</DebugSymbols>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)'=='ReleaseSilentMode'">
+        <OutputType>WinExe</OutputType>
+        <DebugType>none</DebugType>
+        <DebugSymbols>false</DebugSymbols>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)'=='ReleaseCustomFilesSilentMode'">
+        <OutputType>WinExe</OutputType>
+        <DefineConstants>$(DefineConstants);$(Platform);CUSTOM_FILES</DefineConstants>
+        <DebugType>none</DebugType>
+        <DebugSymbols>false</DebugSymbols>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="runtime.win-x64.Microsoft.DotNet.ILCompiler" Version="7.*" />
+        <PackageReference Include="System.CommandLine" Version="2.0.0-*" />
+    </ItemGroup>
+</Project>
